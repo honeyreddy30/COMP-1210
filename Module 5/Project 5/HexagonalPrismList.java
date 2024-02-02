@@ -1,0 +1,181 @@
+/**
+ * Program that stores the name of the list and an ArrayList of 
+ * HexagonalPrism objects.
+ * Project 05.
+ * @author Honey Reddy Nagireddy - COMP 1210 -006
+ * @version 21th September 2022
+ */
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+/**
+ * Demonstrates the ArrayList class.
+ */
+public class HexagonalPrismList 
+{
+//fields
+   private String name = "";
+   private ArrayList<HexagonalPrism>  hrList
+      = new ArrayList<HexagonalPrism>();
+     /** Constructor for HexagonalPrismList.
+     *@param nameIn for name
+     *@param hrListIn for hrList
+     */
+   public HexagonalPrismList(String nameIn, ArrayList<HexagonalPrism> hrListIn)
+   {
+      name = nameIn;
+      hrList = hrListIn;
+   }
+      /**
+   *Returns a string representing the name of the list.
+   *@return name
+   */
+
+   public String getName()
+   {
+      return name;
+   }
+     /**
+     *Returns int representing the number of HexagonalPrism.
+     *objects in HexagonalPrismList.
+     *@return size of list
+     */
+   public int numberOfHexagonalPrisms()
+   {
+      while (hrList.size() != 0)
+      {
+         int hrListLength = hrList.size();
+         return hrListLength;
+      }
+      return 0;
+   }
+   /**
+   *Returns a double representing the total surface area for all
+   * hexagonalPrism objects in a string.
+   *@return double hrListTotalSurfaceArea
+   */
+   public double totalSurfaceArea()
+   {
+      int index = 0;
+      double hrListTotalSurfaceArea = 0;
+      if (hrList.size() != 0) 
+      {
+         while (index < hrList.size())
+         {
+            hrListTotalSurfaceArea += hrList.get(index).surfaceArea();
+            index++;
+         }
+         return hrListTotalSurfaceArea;
+      }
+      else
+      {
+         return hrListTotalSurfaceArea;
+      }
+   }
+    /**
+   *Returns a double representing the total surface area for all
+   * hexagonalPrism objects in a string.
+   *@return double hrListTotalVolume
+   */
+   public double totalVolume()
+   {
+      int index = 0;
+      double hrListTotalVolume = 0;
+      if (hrList.size() > 0) 
+      {
+         while (index < hrList.size())
+         {
+            hrListTotalVolume += hrList.get(index).volume();
+            index++;
+         }
+         return hrListTotalVolume;
+      }
+      else
+      {
+         return hrListTotalVolume;
+      }
+   
+   }
+   /**
+   *Returns a double representing the average surface area for all.
+   * hexagonalPrism objects in the hrList
+   *@return hrListAverageArea
+   */
+   public double averageSurfaceArea()
+   {
+      double hrListAverageArea = 0;
+      if (hrList.size() != 0) {
+         hrListAverageArea = totalSurfaceArea() / hrList.size();
+         return hrListAverageArea;
+      }
+      else 
+      {
+         return hrListAverageArea;
+      }
+   }
+   /**
+   *Returns a double representing the average Volume for all.
+   * hexagonalPrism objects in the hrList
+   *@return hrListAverageVolume
+   */
+   public double averageVolume()
+   {
+      double hrListAverageVolume = 0.0;
+      if (hrList.size() != 0)
+      {
+         hrListAverageVolume = totalVolume() / hrList.size();
+         return hrListAverageVolume;
+      }
+      else
+      {
+         return hrListAverageVolume;
+      }
+   }
+   /**
+   *Returns a string containing the name of the list  result.
+   *followed by each HexagonalPrism in arraylist
+   *@return output
+   */
+
+   public String toString() {
+      String output;
+      int index = 0;
+      output = "----- " + getName() + " -----\n";
+      if (hrList.size() > 0)
+      {
+         while (index < hrList.size()) {
+            output += "\n" + hrList.get(index).toString()
+               + "\n";
+            index++;
+         }
+         return output;
+      }
+      else 
+      {
+         output += "";
+      }
+      return output;
+   }
+   /**
+   *Returns a string containing the name of the list followed by various.
+   *summary items in required decimal format.
+   *@return output
+   */
+   public String summaryInfo() {
+      DecimalFormat df = new DecimalFormat("#,##0.0##");
+      String output = "";
+      output += "----- Summary for " + getName() + " -----";
+      output += "\nNumber of HexagonalPrisms: " + hrList.size();
+      output += "\nTotal Surface Area: " 
+         + df.format(totalSurfaceArea()) 
+         + " square units";
+      output += "\nTotal Volume: " + df.format(totalVolume()) 
+         + " cubic units";
+      output += "\nAverage Surface Area: " 
+         + df.format(averageSurfaceArea()) 
+         + " square units";
+      output += "\nAverage Volume: " + df.format(averageVolume()) 
+         + " cubic units";
+      return output;
+   }
+   
+}
